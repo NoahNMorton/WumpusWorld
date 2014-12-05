@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="WumpusWorldTrogdor:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/WumpusWorldTrogdor_jar</output-path>
+    <root id="archive" name="WumpusWorldTrogdor.jar">
+      <element id="module-output" name="WumpusWorldTrogdor" />
+      <element id="file-copy" path="$PROJECT_DIR$/arrow.gif" />
+      <element id="file-copy" path="$PROJECT_DIR$/black.GIF" />
+      <element id="file-copy" path="$PROJECT_DIR$/breeze.gif" />
+      <element id="file-copy" path="$PROJECT_DIR$/deadwumpus.GIF" />
+      <element id="file-copy" path="$PROJECT_DIR$/Floor.gif" />
+      <element id="file-copy" path="$PROJECT_DIR$/gold.gif" />
+      <element id="file-copy" path="$PROJECT_DIR$/ladder.gif" />
+      <element id="file-copy" path="$PROJECT_DIR$/pit.gif" />
+      <element id="file-copy" path="$PROJECT_DIR$/playerDown.png" />
+      <element id="file-copy" path="$PROJECT_DIR$/playerLeft.png" />
+      <element id="file-copy" path="$PROJECT_DIR$/playerRight.png" />
+      <element id="file-copy" path="$PROJECT_DIR$/playerUp.png" />
+      <element id="file-copy" path="$PROJECT_DIR$/stench.gif" />
+      <element id="file-copy" path="$PROJECT_DIR$/wumpus.gif" />
+    </root>
+  </artifact>
+</component>
