@@ -87,7 +87,7 @@ public class WumpusSquare {
         this.visited = visited;
     }
 
-    public String toString() {
+    public String toString() { //used to display text map
         if (gold) {
             return "G";
         } else if (ladder) {
