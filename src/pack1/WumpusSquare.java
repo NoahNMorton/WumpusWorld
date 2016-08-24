@@ -101,7 +101,5 @@ public class WumpusSquare {
         } else {
             return "*";
         }
-
     }
-
 }
