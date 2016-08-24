@@ -1,49 +1,30 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-out/*
-.idea/*
-*.iml
-*.xml
 *.class
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+*.jar
 
 
-
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Icon must end with two \r
-Icon
+*.war
 
 
-# Thumbnails
-._*
+*.ear
 
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
 
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
+hs_err_pid*
+
+*.iml
+
+
+.idea/*
+
+
+*.log
+out/*
+
+
+*.MF
+
+
+*.bat
+
+
+*.sh
