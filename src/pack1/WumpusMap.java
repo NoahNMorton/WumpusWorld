@@ -6,6 +6,7 @@ package pack1;
  *         Part of Project: WumpusWorldTrogdor
  */
 
+@SuppressWarnings("WeakerAccess")
 public class WumpusMap {
 
     public static final int NUM_ROWS = 10, NUM_COLUMNS = 10, NUM_PITS = 10;

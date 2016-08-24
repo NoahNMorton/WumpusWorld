@@ -6,6 +6,7 @@ package pack1;
  *         Part of Project: WumpusWorldTrogdor
  */
 
+@SuppressWarnings("WeakerAccess")
 public class Mainfile {
 
     public static void main(String[] args) {

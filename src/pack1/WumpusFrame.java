@@ -9,6 +9,7 @@ import java.awt.*;
  *         Created on: 10/21/2014 , Time is :  17:53
  *         Part of Project: WumpusWorldTrogdor
  */
+@SuppressWarnings("WeakerAccess")
 public class WumpusFrame extends JFrame {
 
     public WumpusFrame() {

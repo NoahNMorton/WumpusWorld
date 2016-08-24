@@ -6,6 +6,7 @@ package pack1;
  *         Part of Project: WumpusWorldTrogdor
  */
 
+@SuppressWarnings("SameParameterValue")
 public class WumpusSquare {
 
     private boolean gold, ladder, pit, breeze, wumpus, deadWumpus, stench, visited;

@@ -5,6 +5,7 @@ package pack1;
  *         Created on: 10/20/2014 , Time is :  1:27 PM
  *         Part of Project: WumpusWorldTrogdor
  */
+@SuppressWarnings({"SameParameterValue", "WeakerAccess"})
 public class WumpusPlayer {
     public static final int NORTH = 0, EAST = 1, SOUTH = 2, WEST = 3;
     private int direction;

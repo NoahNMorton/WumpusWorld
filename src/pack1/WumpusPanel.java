@@ -12,6 +12,7 @@ import java.io.File;
  *         Created on: 10/21/2014 , Time is :  17:53
  *         Part of Project: WumpusWorldTrogdor
  */
+@SuppressWarnings("WeakerAccess")
 public class WumpusPanel extends JPanel implements KeyListener {
 
     public static final int PLAYING = 0, DEAD = 2, WON = 1;
@@ -19,20 +20,16 @@ public class WumpusPanel extends JPanel implements KeyListener {
     int status;
     WumpusPlayer player;
     WumpusMap map;
-    Image arrow, black, breeze, deadWumpus, floor, gold, ladder, pit, playerDown, playerLeft, playerRight, playerUp, wumpus, stench;
-
+    Image arrow, breeze, deadWumpus, floor, gold, ladder, pit, playerDown, playerLeft, playerRight, playerUp, wumpus, stench;
 
 
     public WumpusPanel() {
 
-
         setSize(500, 700); //set the size of the window
-
 
         //load images
         try {
             arrow = ImageIO.read((new File("arrow.gif")));
-           // black = ImageIO.read((new File("black.GIF")));
             breeze = ImageIO.read((new File("breeze.gif")));
             deadWumpus = ImageIO.read((new File("deadwumpus.GIF")));
             floor = ImageIO.read((new File("Floor.gif")));
@@ -244,11 +241,11 @@ public class WumpusPanel extends JPanel implements KeyListener {
                     //print ladder
                     g.drawImage(ladder, x * 50, y * 50, null);
 
-                /**
-                 * while(Noah.isAlive())
-                 * {
-                 * Noah.stealGirl(Evan,girl);
-                 * }
+                /*
+                  while(Noah.isAlive())
+                  {
+                  Noah.stealGirl(Evan,girl);
+                  }
                  */
 
                 if (!map.getSquare(y, x).isVisited() && displayFog) {
