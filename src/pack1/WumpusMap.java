@@ -133,9 +133,9 @@ public class WumpusMap {
     public String toString() {
         String finalString = "";
         for (int x = 0; x < NUM_COLUMNS; x++) {
-            System.out.print("\n");
+            finalString += "\n";
             for (int y = 0; y < NUM_ROWS; y++) {
-                finalString += grid[y][x].toString() + " "; //todo >help, not working.
+                finalString += grid[x][y].toString() + " ";
             }
 
         }
