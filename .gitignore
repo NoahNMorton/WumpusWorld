@@ -4,6 +4,11 @@ ehthumbs.db
 
 # Folder config file
 Desktop.ini
+out/*
+.idea/*
+*.iml
+*.xml
+*.class
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
@@ -14,9 +19,7 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
-out/*
-.idea/*
-*.iml
+
 
 # =========================
 # Operating System Files
@@ -44,8 +47,3 @@ Icon
 .AppleDB
 .AppleDesktop
 Network Trash Folder
-Temporary Items
-.apdisk
-*.class
-*.xml
-*.xml
