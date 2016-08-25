@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 
 /**
@@ -12,6 +13,7 @@ import java.io.File;
  *         Created on: 10/21/2014 , Time is :  17:53
  *         Part of Project: WumpusWorldTrogdor
  */
+
 @SuppressWarnings("WeakerAccess")
 public class WumpusPanel extends JPanel implements KeyListener {
 
@@ -22,11 +24,12 @@ public class WumpusPanel extends JPanel implements KeyListener {
     WumpusMap map;
     Image arrow, breeze, deadWumpus, floor, gold, ladder, pit, playerDown, playerLeft, playerRight, playerUp, wumpus, stench;
 
+    BufferedImage buffer = null;
 
     public WumpusPanel() {
 
         setSize(500, 700); //set the size of the window
-
+        buffer = new BufferedImage(getWidth(),getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
         //load images
         try {
             arrow = ImageIO.read((new File("arrow.gif")));
@@ -207,39 +210,41 @@ public class WumpusPanel extends JPanel implements KeyListener {
 
     public void paint(Graphics g) {
 
+        Graphics bg = buffer.getGraphics();
+
         for (int y = 0; y < WumpusMap.NUM_ROWS; y++) {
             for (int x = 0; x < WumpusMap.NUM_COLUMNS; x++) {
 
 
-                g.drawImage(floor, x * 50, y * 50, null);
+                bg.drawImage(floor, x * 50, y * 50, null);
 
 
                 if (map.getSquare(y, x).isGold())
                     //print gold
-                    g.drawImage(gold, x * 50, y * 50, null);
+                    bg.drawImage(gold, x * 50, y * 50, null);
                 if (map.getSquare(y, x).isPit())
                     //print pit
-                    g.drawImage(pit, x * 50, y * 50, null);
+                    bg.drawImage(pit, x * 50, y * 50, null);
 
                 if (map.getSquare(y, x).isBreeze() && !map.getSquare(y, x).isPit())
                     //print breeze
-                    g.drawImage(breeze, x * 50, y * 50, null);
+                    bg.drawImage(breeze, x * 50, y * 50, null);
 
                 if (map.getSquare(y, x).isStench() && !map.getSquare(y, x).isPit())
                     //print stench
-                    g.drawImage(stench, x * 50, y * 50, null);
+                    bg.drawImage(stench, x * 50, y * 50, null);
 
                 if (map.getSquare(y, x).isWumpus() && !map.getSquare(y, x).isPit())
                     //print wumpus
-                    g.drawImage(wumpus, x * 50, y * 50, null);
+                    bg.drawImage(wumpus, x * 50, y * 50, null);
 
                 if (map.getSquare(y, x).isDeadWumpus() && !map.getSquare(y, x).isPit())
                     //print dead wumpus
-                    g.drawImage(deadWumpus, x * 50, y * 50, null);
+                    bg.drawImage(deadWumpus, x * 50, y * 50, null);
 
                 if (map.getSquare(y, x).isLadder())
                     //print ladder
-                    g.drawImage(ladder, x * 50, y * 50, null);
+                    bg.drawImage(ladder, x * 50, y * 50, null);
 
                 /*
                   while(Noah.isAlive())
@@ -249,76 +254,76 @@ public class WumpusPanel extends JPanel implements KeyListener {
                  */
 
                 if (!map.getSquare(y, x).isVisited() && displayFog) {
-                    g.setColor(Color.black);
-                    g.fillRect(x * 50, y * 50, 50, 50);
+                    bg.setColor(Color.black);
+                    bg.fillRect(x * 50, y * 50, 50, 50);
                 }
 
                 //fill back of gui
-                g.setColor(Color.white);
-                g.fillRect(0, 500, 250, 700);
-                g.setColor(Color.black);
-                g.drawLine(250, 500, 500, 500);
-                g.setColor(Color.white);
-                g.fillRect(255, 500, 500, 700);
+                bg.setColor(Color.white);
+                bg.fillRect(0, 500, 250, 700);
+                bg.setColor(Color.black);
+                bg.drawLine(250, 500, 500, 500);
+                bg.setColor(Color.white);
+                bg.fillRect(255, 500, 500, 700);
 
-                g.setColor(Color.black);
-                g.drawString("Inventory:", 0, 520);
+                bg.setColor(Color.black);
+                bg.drawString("Inventory:", 0, 520);
 
                 //inventory
                 if (player.isArrow()) {
-                    g.drawImage(arrow, 0, 550, null);
+                    bg.drawImage(arrow, 0, 550, null);
                 }
                 if (player.isGold()) {
-                    g.drawImage(gold, 50, 550, null);
+                    bg.drawImage(gold, 50, 550, null);
                 }
                 //messages handling
 
-                g.drawString("Messages:", 300, 520);
+                bg.drawString("Messages:", 300, 520);
                 if (map.getSquare(player.getRowPosition(), player.getColPosition()).isLadder()) {
-                    g.setColor(Color.black);
+                    bg.setColor(Color.black);
                     if (player.isGold()) {
                         status = WON;
-                        g.drawString("You climb the ladder.", 300, 550);
+                        bg.drawString("You climb the ladder.", 300, 550);
                     } else {
-                        g.drawString("You bump into the ladder.", 300, 550);
+                        bg.drawString("You bump into the ladder.", 300, 550);
                     }
                 }
                 if (map.getSquare(player.getRowPosition(), player.getColPosition()).isBreeze()) {
-                    g.setColor(Color.black);
+                    bg.setColor(Color.black);
                     // g.fillRect(350,500,450,660);
-                    g.drawString("You feel a breeze.", 300, 570);
+                    bg.drawString("You feel a breeze.", 300, 570);
                 }
                 if (map.getSquare(player.getRowPosition(), player.getColPosition()).isStench()) {
-                    g.setColor(Color.black);
+                    bg.setColor(Color.black);
                     // g.fillRect(350,500,450,660);
-                    g.drawString("You smell a smelly smell.", 300, 590);
-                    g.drawString(" It smells... Smelly.", 300, 600);
-                    g.drawString("Press I,J,K,L to shoot.", 300, 620);
+                    bg.drawString("You smell a smelly smell.", 300, 590);
+                    bg.drawString(" It smells... Smelly.", 300, 600);
+                    bg.drawString("Press I,J,K,L to shoot.", 300, 620);
                 }
                 if (map.getSquare(player.getRowPosition(), player.getColPosition()).isGold()) {
-                    g.setColor(Color.black);
+                    bg.setColor(Color.black);
                     // g.fillRect(350,500,450,660);
-                    g.drawString("You see a glimmer.", 300, 620);
-                    g.drawString("Press p to pick up the glimmer.", 300, 690);
+                    bg.drawString("You see a glimmer.", 300, 620);
+                    bg.drawString("Press p to pick up the glimmer.", 300, 690);
                 }
                 if (map.getSquare(player.getRowPosition(), player.getColPosition()).isPit()) {
-                    g.setColor(Color.black);
+                    bg.setColor(Color.black);
                     // g.fillRect(350,500,450,660);
-                    g.drawString("You fell down a pit.", 300, 640);
-                    g.drawString("Press n to reset.", 300, 690);
+                    bg.drawString("You fell down a pit.", 300, 640);
+                    bg.drawString("Press n to reset.", 300, 690);
                 }
                 if (map.getSquare(player.getRowPosition(), player.getColPosition()).isWumpus()) {
-                    g.setColor(Color.black);
+                    bg.setColor(Color.black);
                     // g.fillRect(350,500,450,660);
-                    g.drawString("You don been eated, fool!", 300, 660);
-                    g.drawString("Press n to reset.", 300, 690);
+                    bg.drawString("You don been eated, fool!", 300, 660);
+                    bg.drawString("Press n to reset.", 300, 690);
                 }
                 if (status == WON) {
-                    g.drawString("You won the game!", 300, 680);
-                    g.drawString("Press n to reset.", 300, 690);
+                    bg.drawString("You won the game!", 300, 680);
+                    bg.drawString("Press n to reset.", 300, 690);
                 }
                 if (wumpusKilled) { //if the wumpus has been killed, display scream heard
-                    g.drawString("You hear a scream!", 300, 650);
+                    bg.drawString("You hear a scream!", 300, 650);
                 }
             }
         }
@@ -326,19 +331,20 @@ public class WumpusPanel extends JPanel implements KeyListener {
         // player display
         if (player.getDirection() == WumpusPlayer.NORTH)
         {
-            g.drawImage(playerUp, player.getColPosition() * 50, player.getRowPosition() * 50, null); //draw the player
+            bg.drawImage(playerUp, player.getColPosition() * 50, player.getRowPosition() * 50, null); //draw the player
         } else if (player.getDirection() == WumpusPlayer.SOUTH)
         {
-            g.drawImage(playerDown, player.getColPosition() * 50, player.getRowPosition() * 50, null); //draw the player
+            bg.drawImage(playerDown, player.getColPosition() * 50, player.getRowPosition() * 50, null); //draw the player
         } else if (player.getDirection() == WumpusPlayer.EAST)
         {
-            g.drawImage(playerRight, player.getColPosition() * 50, player.getRowPosition() * 50, null); //draw the player
+            bg.drawImage(playerRight, player.getColPosition() * 50, player.getRowPosition() * 50, null); //draw the player
         } else if (player.getDirection() == WumpusPlayer.WEST)
         {
-            g.drawImage(playerLeft, player.getColPosition() * 50, player.getRowPosition() * 50, null); //draw the player
+            bg.drawImage(playerLeft, player.getColPosition() * 50, player.getRowPosition() * 50, null); //draw the player
         }
 
-        repaint();
+        g.drawImage(buffer,0,0,null);
+        //repaint();
     }
 
     public void addNotify() {
